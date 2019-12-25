@@ -267,6 +267,7 @@ enum power_supply_property {
 	POWER_SUPPLY_PROP_MANUFACTURER,
 	POWER_SUPPLY_PROP_SERIAL_NUMBER,
 	POWER_SUPPLY_PROP_BATTERY_TYPE,
+	POWER_SUPPLY_PROP_MAX,
 };
 
 enum power_supply_type {
@@ -384,6 +385,14 @@ struct power_supply {
 #endif
 
 #ifdef CONFIG_LEDS_TRIGGERS
+#ifdef CONFIG_MACH_XIAOMI_MARKW
+	struct led_trigger *charging_red_trig;
+	char *charging_red_trig_name;
+	struct led_trigger *charging_green_trig;
+	char *charging_green_trig_name;
+	struct led_trigger *charging_blue_trig;
+	char *charging_blue_trig_name;
+#endif
 	struct led_trigger *charging_full_trig;
 	char *charging_full_trig_name;
 	struct led_trigger *charging_trig;
